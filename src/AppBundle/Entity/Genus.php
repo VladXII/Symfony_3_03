@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="GenusRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GenusRepository")
  * @ORM\Table(name="genus")
  */
 class Genus
@@ -39,6 +39,11 @@ class Genus
      */
     private $funFact;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+
 
     public function getName()
     {
@@ -62,7 +67,7 @@ class Genus
     }
 
     /**
-     * @param mixed $subFamily
+     * @param mixed
      */
     public function setSubFamily($subFamily)
     {
@@ -76,7 +81,6 @@ class Genus
     {
         return $this->speciesCount;
     }
-
 
     /**
      * @param mixed $speciesCount
@@ -101,7 +105,17 @@ class Genus
     {
         $this->funFact = $funFact;
     }
-    public function getUpdatedAt(){
-        return new \DateTime('-'.rand(0,100).'days');
+
+    public function getUpdatedAt()
+    {
+        return new \DateTime('-'.rand(0, 100).'days');
+    }
+
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
     }
 }
